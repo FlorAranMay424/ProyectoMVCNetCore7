@@ -10,17 +10,17 @@
 <div class="row">
     <div class="offset-9 col-3 mb-3">
         <a asp-action="Crear" asp-controller="Inicio" class="btn btn-secondary d-block mx-auto btn-lg">
-          <i class="bi bi-file-plus-fill"></i>Nuevo Usuario  
+            <i class="bi bi-file-plus-fill"></i> Nuevo Usuario
         </a>
     </div>
 </div>
 
 <div class="row">
-       <div class="offset-12">
-           <div class="card border">
-               <div class="card-header bg-dark">
-                   <h3 class="text-white"><strong> Lista de usuarios </strong></h3>
-               </div>
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong> Lista de usuarios </strong></h3>
+            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     @if (Model.Count() > 0)
@@ -28,7 +28,7 @@
                         <table class="table table-bordered" id="tblUsuario" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>@Html.DisplayNameFor(m=>m.Id)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Id)</th>
                                     <th>@Html.DisplayNameFor(m => m.Nombre)</th>
                                     <th>@Html.DisplayNameFor(m => m.Telfono)</th>
                                     <th>@Html.DisplayNameFor(m => m.Celular)</th>
@@ -36,70 +36,71 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                        </table>
-                        <tbody>
-                            @foreach(var item in Model)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(m=>item.Id)</td>
-                                    <td>@Html.DisplayFor(m => item.Nombre)</td>
-                                    <td>@Html.DisplayFor(m => item.Telfono)</td>
-                                    <td>@Html.DisplayFor(m => item.Celular)</td>
-                                    <td>@Html.DisplayFor(m => item.Email)</td>
-                                    <td>
-                                        <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-secondary" asp-action="Detalle" asp-route-id="@item.Id">Detalle</a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-danger" asp-action="Borrar" asp-route-id="@item.Id">Borrar</a>
-                                    </td>
-                                </tr>    
-                            }
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Id)</td>
+                                        <td>@Html.DisplayFor(m => item.Nombre)</td>
+                                        <td>@Html.DisplayFor(m => item.Telfono)</td>
+                                        <td>@Html.DisplayFor(m => item.Celular)</td>
+                                        <td>@Html.DisplayFor(m => item.Email)</td>
+                                        <td>
+                                            <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i>Editar</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-secondary" asp-action="Detalle" asp-route-id="@item.Id"><i class="bi bi-file-fill"></i>Detalle</a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger" asp-action="Borrar" asp-route-id="@item.Id"><i class="bi bi-eraser-fill"></i>Borrar</a>
+                                        </td>
+                                    </tr>
+                                }
 
-                        </tbody>
+                            </tbody>
+                        </table>
+
                     }
                     else
                     {
-                     <p> No hay registros</p>    
+                        <p> No hay registros</p>
                     }
                 </div>
-           </div>
-           </div>
-       </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-@section Scripts{
-        <script>
-            $(document).ready(function () {
-                //Llamar a datatable
-                $('#tblUsuarios').DataTable({
-                    language: {
-                        "decimal": "",
-                        "emptyTable": "No hay información",
-                        "info": "Mostrando _START_a _END_ de _TOTAL_ Entradas",
-                        "infoEmpety": "Mostrando 0 to 0 of 0 Entradas",
-                        "infoFiltered": "(Filgrado de _MAX_ total entradas)",
-                        "infoPostFix": "",
-                        "thousands": ",",
-                        "lengtMenu": "Mostrar _MENU_ Entradas",
-                        "loadingRecords": "Cargando...",
-                        "processing": "Procesando...",
-                        "search": "Procesando...",
-                        "zeroRecord": "Sin resultados encontrados",
-                        "paginate": {
-                            "first": "Primero",
-                            "last": "Ultimo",
-                            "next": "Siguiente",
-                            "previous": "Anterior"
-                        }
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //Llamar a datatable
+            $('#tblUsuarios').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información",
+                    "info": "Mostrando _START_a _END_ de _TOTAL_ Entradas",
+                    "infoEmpety": "Mostrando 0 to 0 of 0 Entradas",
+                    "infoFiltered": "(Filgrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengtMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Procesando...",
+                    "zeroRecord": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
                     }
-                });
+                }
             });
-        </script>
-    }
+        });
+    </script>
+}
 
 
 
