@@ -13,16 +13,43 @@ namespace CRUDMVCPruebaFlorenciaA.Controllers
 
 
         public InicioController(ApplicationDbContext contexto)
-        { 
-         _contexto = contexto;
+        {
+            _contexto = contexto;
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string buscar)
         {
-            return View(await _contexto.Contacto.ToListAsync());
+
+
+            if (_contexto.Contacto == null)
+            {
+                return Problem("Entity set 'Es null' is null ");
+            }
+
+            var contacto = from c in _contexto.Contacto
+                           select c;
+
+            if (!String.IsNullOrEmpty(buscar))
+            //   if(id!=null)
+            {
+                contacto = contacto.Where(s => s.Nombre!.Contains(buscar));
+            }
+
+            return View(await contacto.ToListAsync());
+
         }
+
+
+        [HttpPost]
+        public string Index(string buscar, bool notUsed)
+        {
+            return "From [HttpPost]Index: filter on " + buscar;
+        }
+
+
+
 
         //Crear 
 
@@ -40,10 +67,10 @@ namespace CRUDMVCPruebaFlorenciaA.Controllers
             {
                 _contexto.Contacto.Add(contacto);
                 await _contexto.SaveChangesAsync();
-                return  RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
-        
-        return View();
+
+            return View();
         }
 
 
@@ -58,7 +85,7 @@ namespace CRUDMVCPruebaFlorenciaA.Controllers
 
             var contacto = _contexto.Contacto.Find(id);
 
-            if(contacto == null)
+            if (contacto == null)
             {
                 return NotFound();
             }
@@ -126,9 +153,9 @@ namespace CRUDMVCPruebaFlorenciaA.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> BorrarContacto(int? id)
         {
-            var contacto = await _contexto.Contacto.FindAsync(id); 
-           
-            if(contacto == null)
+            var contacto = await _contexto.Contacto.FindAsync(id);
+
+            if (contacto == null)
             {
                 return View();
             }
@@ -136,10 +163,30 @@ namespace CRUDMVCPruebaFlorenciaA.Controllers
             //Borrado
             _contexto.Contacto.Remove(contacto);
             await _contexto.SaveChangesAsync();
-            return RedirectToAction(nameof(Index)) ;
+            return RedirectToAction(nameof(Index));
 
 
         }
+
+
+        //Get:Buscar
+        [HttpPost]
+        public async Task<IActionResult> Buscar(string buscar)
+        {
+
+            var usuarios = from contacto in _contexto.Contacto select contacto;
+
+
+            if (!String.IsNullOrEmpty(buscar))
+            {
+                usuarios = usuarios.Where(s => s.Nombre!.Contains(buscar));
+            }
+
+
+
+            return View(await usuarios.ToListAsync());
+        }
+
 
 
 
