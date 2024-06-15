@@ -1,0 +1,68 @@
+   .color-blue {
+        background-color: #0d6efd;
+
+   }
+
+    .color-indigo {
+    background-color: #6610f2;
+    }
+
+    .color-purple {
+    background-color: #6f42c1;
+    }
+
+    .color-pink {
+    background-color: #d63384;
+    }
+
+    .color-red {
+    background-color: #dc3545;
+    }
+
+    .color-orange {
+    background-color: #fd7e14;
+    }
+
+    .color-yellow {
+    background-color: #ffc107;
+    }
+
+    .color-green {
+    background-color: #198754;
+    }
+
+    .color-teal {
+    background-color: #20c997;
+    }
+
+    .color-cyan {
+    background-color: #0dcaf0;
+    }
+
+    .color-gray {
+    background-color: #adb5bd;
+    }
+
+    .color-black {
+    background-color: #000;
+    }
+
+    .color-white {
+    background-color: #fff;
+    }
+
+.color-text-purple {
+    color: #6f42c1;
+}
+
+.color-text-green {
+    color: #198754;
+}
+
+.color-text-red {
+    color: #c70909;
+}
+
+.color-text-black {
+    color: #000;
+}

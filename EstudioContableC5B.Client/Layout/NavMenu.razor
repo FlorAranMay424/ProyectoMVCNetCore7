@@ -1,0 +1,58 @@
+﻿@using BlazorBootstrap
+@using BlazorStrap
+
+<PageTitle>Estudio Contable 5C</PageTitle>
+
+<header>
+
+</header>
+
+<nav>
+
+    <BSNav IsList="true" IsPills="true" IsFill="true">
+
+        <BSNavItem>
+            <BSNavLink href="/inicio">Inicio</BSNavLink>
+        </BSNavItem>
+
+        <BSNavItem>
+            <BSNavLink href="/principal">Principal</BSNavLink>
+        </BSNavItem>
+
+        <BSNavItem>
+            <BSNavLink href="/equipo">Equipo</BSNavLink>
+        </BSNavItem>
+
+        <BSNavItem>
+            <BSNavLink href="/consultoria">Consultoria</BSNavLink>
+        </BSNavItem>
+
+        <BSNavItem>
+            <BSNavLink href="/servicio">Servicio</BSNavLink>
+        </BSNavItem>
+
+        <BSNavItem>
+            <BSNavLink href="/contacto">Contacto</BSNavLink>
+        </BSNavItem>
+
+        <BSNavItem>
+            <BSNavLink href="/chat">Chat</BSNavLink>
+        </BSNavItem>
+
+    </BSNav>
+
+
+
+<Offcanvas @ref="offcanvas" />
+</nav>
+
+
+@code {
+    private Offcanvas offcanvas = default!;
+
+    private async Task ShowEmployeeComponent()
+    {
+        var parameters = new Dictionary<string, object>();
+        parameters.Add("EmployeeId", 321);
+    }
+}
